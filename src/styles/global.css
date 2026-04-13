@@ -1,0 +1,73 @@
+:root {
+  --azul-bienestar: #0056b3;
+  --verde-imss: #1d5b41;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* El body ahora tiene un degradado suave de azul a blanco */
+  background: linear-gradient(180deg, var(--azul-bienestar) 0%, #a7c5eb 50%, #ffffff 100%);
+  background-attachment: fixed; /* Mantiene el degradado mientras haces scroll */
+  color: var(--azul-bienestar); /* El texto ahora es azul corporativo por defecto */
+}
+
+a {
+  color: var(--azul-bienestar);
+  text-decoration: none;
+}
+
+h2 {
+  color: var(--azul-bienestar) !important;
+}
+
+.bg-bienestar { background-color: var(--azul-bienestar); }
+.text-bienestar { color: var(--azul-bienestar); }
+
+.hero-section {
+  padding: 60px 0;
+}
+
+.logo-main {
+  max-width: 250px;
+  height: auto;
+}
+
+/* Tarjetas de planes */
+.card-plan {
+  transition: transform 0.3s ease;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #ffffff; /* Fondo blanco para las tarjetas */
+  color: #212529; /* Texto oscuro dentro de las tarjetas */
+  border: 2px solid var(--azul-bienestar); /* Borde azul suave */
+}
+
+.card-plan:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 86, 179, 0.2);
+}
+
+/* Tarjetas de planes detalles */
+.list-unstyled li {
+  color: var(--azul-bienestar); /* El texto de los detalles ahora es azul */
+}
+
+/* Acordeón (FAQ) */
+.accordion-item {
+  background-color: #ffffff;
+  color: #212529;
+}
+
+.accordion-button {
+  color: var(--azul-bienestar);
+}
+
+.accordion-body {
+    color: var(--azul-bienestar);
+}
+
+/* Modal */
+.modal-content {
+  background-color: #ffffff;
+  color: #212529;
+}

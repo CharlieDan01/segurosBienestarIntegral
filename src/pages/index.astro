@@ -1,0 +1,359 @@
+---
+// src/pages/index.astro
+import '../styles/global.css';
+import Header from '../components/header.astro'; 
+import Footer from '../components/footer.astro'; 
+
+const tel1 = import.meta.env.PUBLIC_TEL_1;
+const tel2 = import.meta.env.PUBLIC_TEL_2;
+
+const msgGeneral = "Hola, me interesa información sobre el alta en el IMSS.";
+const msgPlan1 = "Hola, me interesa contratar el Plan #1 ($1,200 mensuales).";
+const msgPlan2 = "Hola, me interesa contratar el Plan #2 con Afore e Infonavit ($2,500 mensuales).";
+
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bienestar Integral - Afiliación al IMSS</title>
+    <link rel="icon" href="../../public/img/logo.jpg" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+
+    <Header />
+
+    <main>
+
+    <header class="hero-section text-center" id="inicio">
+      <div class="container">
+        <h1 class="display-4 fw-bold">Seguro para trabajadores independientes</h1>
+        <p class="lead mt-3">Seguro para ti, tus empleados y sus familias.</p>
+        
+        <div class="mt-4 mx-auto" style="max-width: 600px;"> 
+          <div id="carruselHero" class="carousel slide shadow-lg rounded mb-4 overflow-hidden" data-bs-ride="carousel">
+            
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carruselHero" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carruselHero" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carruselHero" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+
+            <div class="carousel-inner" style="background-color: #ffffff;">
+              <div class="carousel-item active" data-bs-interval="3000">
+                <img src="/img/1.jpeg" class="d-block w-100" style="max-height: 400px; object-fit: contain;" alt="Beneficios IMSS 1" />
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img src="/img/2.jpeg" class="d-block w-100" style="max-height: 400px; object-fit: contain;" alt="Beneficios IMSS 2" />
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img src="/img/3.jpeg" class="d-block w-100" style="max-height: 400px; object-fit: contain;" alt="Beneficios IMSS 3" />
+              </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carruselHero" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carruselHero" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Siguiente</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="text-center pb-5">
+      <button type="button" class="btn btn-primary btn-lg px-5 py-3 fw-bold shadow-lg rounded-pill fs-4" data-bs-toggle="modal" data-bs-target="#modalTramite" style="background-color: #1d5b41; border-color: #1d5b41;">
+        🚀 Comenzar Trámite Ahora
+      </button>
+    </div>
+
+    <div class="container my-5 py-5 bg-white shadow-sm rounded-4">
+      <div class="row align-items-center g-5">
+        <div class="col-md-6 text-center border-end">
+          <img src="/img/logo.jpg" alt="Bienestar Integral Logo" class="img-fluid logo-main border border-azul-bienestar p-3 rounded-pill bg-light shadow-sm" style="max-width: 350px;">
+        </div>
+        <div class="col-md-6 text-center text-md-start">
+          <h2 class="display-5 fw-bold text-azul-bienestar mb-3">¿Ya nos sigues en Facebook?</h2>
+          <p class="lead text-dark">Conoce todos los beneficios, noticias y promociones de ley que tenemos para ti. ¡Te esperamos!</p>
+          <a href={import.meta.env.FACEBOOK} target="_blank" class="btn btn-primary btn-lg px-5 py-3 fs-5 fw-bold rounded-pill shadow-sm" style="background-color: #3b5998; border-color: #3b5998;">
+            <i class="fab fa-facebook me-2"></i> Seguir en Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalTramite" tabindex="-1" aria-labelledby="modalTramiteLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 shadow">
+          
+          <div class="modal-header text-white" style="background-color: var(--azul-bienestar);">
+            <h5 class="modal-title fw-bold" id="modalTramiteLabel">Inicia tu Alta en el IMSS</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          
+          <div class="modal-body p-4 text-start">
+            <p class="text-muted mb-4">Completa tus datos y confirma que tienes tus documentos. Al finalizar, te conectaremos con un asesor por WhatsApp.</p>
+            
+            <form id="formTramite">
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label for="nombreCliente" class="form-label fw-bold">Nombre Completo</label>
+                  <input type="text" class="form-control border-primary border-opacity-50" id="nombreCliente" placeholder="Ej. Juan Pérez" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="telefonoCliente" class="form-label fw-bold">Número de Teléfono</label>
+                  <input type="tel" class="form-control border-primary border-opacity-50" maxlength="15" id="telefonoCliente" placeholder="Ej. 8123456789" required>
+                </div>
+              </div>
+
+              <h6 class="fw-bold mb-3 text-bienestar">Confirmación de Documentos (Requerido)</h6>
+              
+              <div class="mb-3 p-3 bg-light rounded border border-2 border-primary border-opacity-25">
+                <div class="form-check fs-5 mb-1">
+                  <input class="form-check-input border-secondary" type="checkbox" id="checkNSS">
+                  <label class="form-check-label fw-bold" for="checkNSS">
+                    Tengo el archivo de mi NSS
+                  </label>
+                </div>
+                <a href={import.meta.env.NUMERO_SS} target="_blank" class="small text-decoration-none fw-bold text-primary ms-4">
+                  👉 Aquí puedes obtener tu NSS
+                </a>
+              </div>
+
+              <div class="mb-4 p-3 bg-light rounded border border-2 border-primary border-opacity-25">
+                <div class="form-check fs-5 mb-1">
+                  <input class="form-check-input border-secondary" type="checkbox" id="checkCURP">
+                  <label class="form-check-label fw-bold" for="checkCURP">
+                    Tengo el archivo de mi CURP
+                  </label>
+                </div>
+                <a href={import.meta.env.CURP} target="_blank" class="small text-decoration-none fw-bold text-primary ms-4">
+                  👉 No sé cuál es mi CURP
+                </a>
+              </div>
+
+              <div class="mb-4">
+                <label for="selectPlan" class="form-label fw-bold">¿Qué plan deseas contratar?</label>
+                <select class="form-select border-success" id="selectPlan" required>
+                  <option value="" selected disabled>Elige una opción...</option>
+                  <option value="Plan 1">Plan #1 - Salud y Protección ($1,200/mes)</option>
+                  <option value="Plan 2">Plan #2 - Cobertura Total con Afore ($2,500/mes)</option>
+                </select>
+              </div>
+
+              <h6 class="fw-bold text-center mb-3 mt-5">Elige con qué asesor continuar tu trámite:</h6>
+              <div class="d-grid gap-3 col-md-10 mx-auto">
+                <button type="button" class="btn btn-success fw-bold py-3 fs-5" onclick={`enviarFormularioWa('${tel1}')`}>
+                  📲 Enviar a Asesor 1 (866 630 2464)
+                </button>
+                <button type="button" class="btn btn-outline-success fw-bold py-2" onclick={`enviarFormularioWa('${tel2}')`}>
+                  📲 Enviar a Asesor 2 (81 3561 9501)
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <section class="container my-5 py-4" id="quienes">
+      <h2 class="text-center mb-4 fw-bold text-bienestar">¿Quiénes somos?</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <p class="lead text-center text-dark">
+            Somos una empresa especializada en la afiliación al IMSS para trabajadores independientes, brindando soluciones integrales de seguridad social.
+            Nos encontramos en Monclova, Coahuila, pero ofrecemos nuestros servicios a nivel nacional. 
+            Nuestro objetivo es facilitar el acceso a los beneficios del IMSS para que puedas proteger tu salud y la de tu familia sin complicaciones.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" id="planes">
+      <div class="container">
+        <h2 class="text-center mb-5 fw-bold text-bienestar">Nuestros Esquemas de Afiliación</h2>
+        <div class="row g-4 justify-content-center">
+          
+          <div class="col-md-5">
+            <div class="card h-100 card-plan border-0 shadow-lg border-top border-primary border-4">
+              <div class="card-body p-4">
+                <div class="badge bg-primary mb-2">Plan #1 - Básico</div>
+                <h3 class="card-title h4 fw-bold text-bienestar">Salud y Protección Familiar</h3>
+                <ul class="list-unstyled mt-3 text-bienestar fw-semibold">
+                  <li class="mb-2">✅ Atención médica y Medicamentos</li>
+                  <li class="mb-2">✅ Hospitalización y Cirugías</li>
+                  <li class="mb-2">✅ Maternidad y Partos</li>
+                  <li class="mb-2">✅ Guarderías</li>
+                </ul>
+                <div class="mt-4 pt-3 border-top">
+                  <p class="mb-0 text-muted small">Alta: <strong>$2,500</strong></p>
+                  <p class="h4 text-success fw-bold">Mensual: $1,200</p>
+                  <div class="d-grid gap-2 mt-4">
+                    <button type="button" class="btn px-4 py-2 fw-bold shadow-sm rounded-pill text-white" data-bs-toggle="modal" data-bs-target="#modalTramite" style="background-color: #1d5b41;">
+                      Comenzar Trámite
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-5">
+            <div class="card h-100 card-plan border-0 shadow-lg border-top border-warning border-4">
+              <div class="card-body p-4">
+                <div class="badge bg-warning text-dark mb-2">Plan #2 - El más completo</div>
+                <h3 class="card-title h4 fw-bold text-bienestar">Cobertura Total (Afore e Infonavit)</h3>
+                <ul class="list-unstyled mt-3 text-bienestar fw-semibold">
+                  <li class="mb-2">✅ <strong>Todo lo del Plan #1</strong></li>
+                  <li class="mb-2">✅ Aportaciones al Afore e Infonavit</li>
+                  <li class="mb-2">✅ Aumenta semanas cotizadas</li>
+                  <li class="mb-2">✅ Recuperación de derechos</li>
+                </ul>
+                <div class="mt-4 pt-3 border-top">
+                  <p class="mb-0 text-muted small">Alta: <strong>$3,500</strong></p>
+                  <p class="h4 text-success fw-bold">Mensual: $2,500</p>
+                  <div class="d-grid gap-2 mt-4">
+                    <button type="button" class="btn px-4 py-2 fw-bold shadow-sm rounded-pill text-white" data-bs-toggle="modal" data-bs-target="#modalTramite" style="background-color: #1d5b41;">
+                      Comenzar Trámite
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-10">
+            <div class="alert alert-info mt-4 text-center border-info border-opacity-50 shadow-sm" role="alert">
+              <strong>¡Importante!</strong> Pagas hasta que veas que estás dado de alta.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container my-5 py-4" id="faq">
+      <h2 class="text-center fw-bold mb-4 text-bienestar">Preguntas Frecuentes</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          
+          <div class="accordion shadow-lg" id="faqAccordion">
+            <div class="accordion-item border-primary border-opacity-25">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button fw-bold text-bienestar" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  ¿El trámite es completamente legal?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-bienestar">
+                  Sí, el trámite es 100% legal y transparente. Te damos de alta bajo el régimen correspondiente para que tú y tu familia disfruten de todos los beneficios de ley sin ningún riesgo.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border-primary border-opacity-25">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed fw-bold text-bienestar" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  ¿Tengo que pagar algo por adelantado?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-bienestar">
+                  No. Tu tranquilidad es primero. Realizas el pago de tu alta <strong>hasta que verifiques</strong> por ti mismo que ya te encuentras activo en el sistema del IMSS.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border-primary border-opacity-25">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed fw-bold text-bienestar" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  ¿En cuánto tiempo quedo dado de alta?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-bienestar">
+                  Nuestro proceso es muy ágil. Una vez que nos entregas tu documentación, tu alta queda reflejada en el sistema en un lapso de <strong>24 horas</strong>.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border-primary border-opacity-25">
+              <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed fw-bold text-bienestar" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  ¿Qué documentos necesito?
+                </button>
+              </h2>
+              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-bienestar">
+                  Solo necesitas CURP, tu número de seguridad social y un número de teléfono. Nosotros nos encargamos de todo el proceso de afiliación.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>    
+
+    <div class="container my-5 py-5 bg-white shadow-sm rounded-4" id="socio">
+      <div class="row align-items-center g-4">
+        <div class="col-md-6 text-center px-lg-5 position-relative">
+          <h2 class="display-6 fw-bold text-bienestar mb-4">Buscamos Asesores!</h2>
+          <p class="lead text-muted mb-4">
+            Tú también puedes ser parte de nuestra comunidad de socios y disfrutar de todos los beneficios que tenemos para ti.
+          </p>
+          
+          <a href={`https://wa.me/${tel1}?text=Hola,%20me%20interesa%20ser%20socio`} target="_blank" class="btn btn-success btn-lg px-5 py-3 fs-5 fw-bold rounded-pill shadow-sm" style="background-color: #25D366; border-color: #25D366;">
+            Envíanos un mensaje!
+          </a>
+
+          <div class="d-none d-md-block position-absolute top-50 end-0 translate-middle-y" style="width: 1px; height: 80%; background-color: #e0e0e0;"></div>
+        </div>
+
+        <div class="col-md-6 text-center mt-5 mt-md-0">
+          <div class="d-inline-block p-2 rounded-pill bg-white shadow-sm border border-light-subtle">
+            <img 
+              src="/img/asesora bienestar.jpg" 
+              alt="Únete como socio" 
+              class="img-fluid rounded-pill" 
+              style="width: 100%; max-width: 600px; height: 260px; object-fit: cover;"
+            >
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <section class="py-5" id="ubicacion">
+      <div class="container text-center">
+        <h2 class="fw-bold mb-4 text-bienestar">Ubicación</h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="ratio ratio-16x9 shadow-lg rounded overflow-hidden border border-3 border-azul-bienestar border-opacity-25">
+              <iframe 
+                src={import.meta.env.UBICACION} 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </main>
+
+    <Footer />
+    
+    <script is:inline src="/js/whatsapp.js"></script>
+    
+    <script is:inline src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+</html>
